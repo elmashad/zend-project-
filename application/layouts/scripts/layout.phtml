@@ -1,0 +1,67 @@
+<?php 
+$this->layout()->nav = $this->action('render', 'menu', null,
+array('menu' => $this->mainMenuId));
+
+$this->layout()->adminMenu = $this->action(
+'render', 'menu', null, array('menu' => $this->adminMenuId)
+);
+$this->layout()->userForm = $this->action('index', 'user');
+?>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<?php
+    echo '<?xml version="1.0" encoding="UTF-8" ?>';
+    echo $this->headTitle();
+    echo $this->headScript();
+    echo $this->doctype();
+    // add a link to the site style sheet
+    $this->loadSkin('blues');
+    echo $this->headLink();
+?>
+</head>
+
+<body>
+<div id="pageWrapper">
+    <div id="header">
+        <h1>Zend Framework CMS</h1>
+    </div>
+    <div id="nav">
+        <?php echo $this->layout()->nav;?>&nbsp;
+    </div>
+    <div id="sidebar">
+        <div id="subNav">
+            <div id='searchForm'>
+                <h2>Search Site</h2>
+                <?php
+                    $searchForm = new Form_Search();
+                    $searchForm->setAction('/zendf/search');
+                    echo $searchForm;
+                ?>
+                <br />
+            </div>
+            <?php echo $this->layout()->subNav;?>&nbsp;
+        </div>
+        <div id="adminMenu">
+            <?php echo $this->layout()->adminMenu;?>&nbsp;
+        </div>
+        <div id="userForm">
+                <div id="feeds">
+                <h2>Feeds</h2>
+                <p><a href='/zendf/feed/rss'>Click Here</a> to subscribe to our RSS feed.</p>
+                </div>
+            <?php echo $this->layout()->userForm;?>&nbsp;
+        </div>
+    </div>
+
+    <div id="main">        
+        <?php echo $this->layout()->content;?>&nbsp;
+    </div>
+    
+    <div id="footer">
+        <p><em>Powered by the Zend Framework</em></p>
+    </div>
+</div>
+</body>
+</html>

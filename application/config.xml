@@ -1,0 +1,12 @@
+	<?xml version="1.0"?>
+	<configdata>
+	  <app>
+	    <webhost>localhost</webhost>
+	    <database>
+	      <host>localhost</host>
+	      <username>root</username>
+	      <password>admin</password>
+	      <dbname>zend</dbname>
+	    </database>
+	  </app>
+	</configdata>
